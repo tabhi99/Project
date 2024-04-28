@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500&family=PT+Serif&display=swap'); </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>Post list Page</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+</head>
+<body>
+
+        <header class="page_header">
+            <div class="page-header">
+                {% if user.is_authenticated %}
+                    <div class="container"></div>
+                        <a class="btn btn-info" href="{% url 'logout' %}" style="float:right; margin-right:20px">Logout</a>
+                        <a class="btn btn-info" href="{% url 'post_new' %}" style="float:right; margin-right:20px">Add New Post</a>
+                {% else %}
+                        <a class="btn btn-info" href="{% url 'login' %}" style="float:right; margin-right:20px">Login</a>
+               	        <a class="btn btn-info" href="{% url 'register' %}" style="float:right; margin-right:20px">Register</a>
+                {% endif %}
+
+                <h1> <a href="#">Django Blogging Application</a> </h1>
+            </div>
+
+
+
+        </header>
+        {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong> {{msg}}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+
+
+
+</body>
+</html>

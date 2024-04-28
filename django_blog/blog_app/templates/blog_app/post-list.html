@@ -1,0 +1,20 @@
+{% extends 'blog_app/base.html'%}
+{% block content %}
+    <div class="row">
+    <div class="col">
+    {% for post in post_info %}
+        <article class="post">
+        {% if post.Publish_Date %}
+            <time class="date">published date:{{ post.Publish_Date }}</time>
+        {% endif %}
+        <h2><a href={% url 'post_detail' pk=post.pk %}>{{ post.Title }}</a></h2>
+        <p> {{ post.Blog_Content }}</p>
+        <time> Create Date:{{ post.Create_Date }}</time>
+        </article>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>
