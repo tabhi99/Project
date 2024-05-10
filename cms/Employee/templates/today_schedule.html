@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Today's Schedule</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Date of Schedule</th>
+            <th>Time of Schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in schedules %}
+        <tr>
+            <td>{{ appointment.Name }}</td>
+            <td>{{ appointment.Date_Of_Schedule }}</td>
+            <td>{{ appointment.Time_Of_Schedule }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

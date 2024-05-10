@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<center>
+    <div class = "jumbotron">
+        <h1 class="display-4"> Schedule Doctor's Appointment</h1>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table">
+            {{form.as_table}}
+        </table>
+        <input type="submit" class="btn btn-primary btn-lg" name="Register">
+    </form>
+</center>
+{% endblock %}
+    
